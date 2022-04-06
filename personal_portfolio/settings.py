@@ -130,3 +130,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+try:
+    from .local_settings import *
+    print("We must be in Local Environment!")
+except:
+    print("We must be in Production Environment!")
