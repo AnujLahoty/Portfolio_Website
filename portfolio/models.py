@@ -47,11 +47,15 @@ class ListField(models.TextField):
         return self.get_prep_value(value)
 
 class Project(models.Model):
+    serial_no = models.IntegerField(default=99)
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=2500)
     image = models.ImageField(upload_to='portfolio/images/')
     url = models.URLField(blank=True)
     skills = ListField(default=[])
+    
+    class Meta:
+        ordering = ('serial_no',)
 
     def __str__(self):
         return f"{self.title}"
